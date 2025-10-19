@@ -1,7 +1,3 @@
-Here is a complete README file for your GitHub repository, based on the course information you provided.
-
----
-
 # Sensors, Embedded Systems and Algorithms for Service Robotics - Lab Solutions
 
 This repository contains the laboratory solutions for the **Sensors, Embedded Systems and Algorithms for Service Robotics** course at **Politecnico di Torino** (Academic Year 2025-2026).
