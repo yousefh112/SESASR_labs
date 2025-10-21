@@ -1,84 +1,62 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool # Import Bool for reset subscriber
 
 class ControllerResetNode(Node):
-    """
-    A ROS 2 node that controls a robot's movement in an expanding square pattern
-    and resets its state upon receiving a signal on the /reset topic.
-    """
     def __init__(self):
-        """
-        Initializes the ControllerResetNode.
-        """
         super().__init__('controller_reset')
-        
-        # Publisher for velocity commands.
         self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
         
-        # Subscriber for the reset signal.
-        self.reset_subscription_ = self.create_subscription(
+        # Reset subscription
+        self.reset_subscription = self.create_subscription(
             Bool,
             '/reset',
             self.reset_callback,
             10)
             
-        # Timer to publish commands at 1 Hz.
-        self.timer_ = self.create_timer(1.0, self.timer_callback)
+        timer_period = 1.0  # 1 Hz
+        self.timer = self.create_timer(timer_period, self.timer_callback)
         
-        # Initialize control state variables.
-        self.N_ = 1
-        self.state_ = 0  # 0: +X, 1: +Y, 2: -X, 3: -Y
-        self.counter_ = 0
-        
-        self.get_logger().info('Controller Reset Node has started.')
+        self.velocity = 1.0  # Moves at 1 m/s
+        self.reset_state() # Call reset_state to initialize variables
+
+    def reset_state(self):
+        # This function contains the reset logic
+        self.N = 1         # Reset N to 1
+        self.counter = 0   # Reset counter
+        self.state = 0     # Reset state to 0 (+X)
+
+    def reset_callback(self, msg):
+        if msg.data:
+            self.get_logger().info('Reset signal received. Resetting controller state.')
+            self.reset_state() # Reset N, counter, and state
 
     def timer_callback(self):
-        """
-        Called by the timer to publish the next velocity command.
-        """
         msg = Twist()
-
-        # Determine velocity based on the current state.
-        if self.state_ == 0:  # Move along +X axis
-            msg.linear.x = 1.0
-        elif self.state_ == 1:  # Move along +Y axis
-            msg.linear.y = 1.0
-        elif self.state_ == 2:  # Move along -X axis
-            msg.linear.x = -1.0
-        elif self.state_ == 3:  # Move along -Y axis
-            msg.linear.y = -1.0
-
+        
+        if self.state == 0:    # N seconds along X-axis
+            msg.linear.x = self.velocity
+        elif self.state == 1:  # N seconds along Y-axis
+            msg.linear.y = self.velocity
+        elif self.state == 2:  # N seconds opposite X-axis
+            msg.linear.x = -self.velocity
+        elif self.state == 3:  # N seconds opposite Y-axis
+            msg.linear.y = -self.velocity
+            
         self.publisher_.publish(msg)
-        self.get_logger().info(f'Publishing cmd_vel: linear.x={msg.linear.x}, linear.y={msg.linear.y}')
-
-        self.counter_ += 1
-
-        # Check if it's time to change state.
-        if self.counter_ >= self.N_:
-            self.counter_ = 0
-            self.state_ = (self.state_ + 1) % 4
-            # If a full cycle is complete, increment N.
-            if self.state_ == 0:
-                self.N_ += 1
-                self.get_logger().info(f'--- Increasing N to {self.N_} ---')
-                
-    def reset_callback(self, msg):
-        """
-        Callback function for the /reset subscriber.
-        Resets the controller's state variables.
-        """
-        if msg.data:
-            self.get_logger().info('RESET signal received. Resetting controller state.')
-            self.N_ = 1
-            self.state_ = 0
-            self.counter_ = 0
+        self.get_logger().info(f'Publishing: N={self.N}, state={self.state}, linear_x: {msg.linear.x}, linear_y: {msg.linear.y}')
+        
+        self.counter += 1
+        
+        if self.counter >= self.N:
+            self.counter = 0
+            self.state = (self.state + 1) % 4
+            
+            if self.state == 0:
+                self.N += 1
 
 def main(args=None):
-    """
-    Main function to initialize and run the ROS 2 node.
-    """
     rclpy.init(args=args)
     controller_reset_node = ControllerResetNode()
     rclpy.spin(controller_reset_node)
