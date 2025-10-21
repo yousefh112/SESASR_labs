@@ -1,13 +1,9 @@
 
 ### **Methodology Report for Lab 01: ROS 2 Basic Concepts**
 
-<<<<<<< HEAD
-**Date:** October , 2025
-**Author:** Gemini AI
-=======
+
 **Date:** 14 October , 2025
 **Author:** Yousef Abdelhady
->>>>>>> 23cd025 (adding lab 1 report)
 
 #### **1. Introduction**
 
