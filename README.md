@@ -9,6 +9,11 @@ The labs focus on practical implementation of robotics concepts using ROS 2, sim
 This repository is intended for **educational and reference purposes only**. The solutions provided are my own work.
 
 ---
+## Contributors
+* **Yousef Abdelhady (https://github.com/yousefh112)**
+* **Adnan Ramlawi**
+* **Giorgia Boeri (https://github.com/GiorgiaB04)**
+* **Zhoe Yojing**
 
 ## Lab Modules Overview
 
