@@ -19,9 +19,9 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='yousef',
-    maintainer_email='yousef_hesham.yh112@icloud.com',
-    description='TODO: Package description',
+   maintainer='yousef, girgia, Yijing, Adnan',
+    maintainer_email='s355447@studenti.polito.it, s352186@studenti.polito.it, s353515@studenti.polito.it, s355177@studenti.polito.it',
+    description='TODO: This package implements a bump-and-go controller for TurtleBot3 simulation.',
     license='TODO: License declaration',
     extras_require={
         'test': [

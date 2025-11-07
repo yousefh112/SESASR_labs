@@ -13,9 +13,9 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='yousef',
-    maintainer_email='yousef@todo.todo',
-    description='TODO: Package description',
+    maintainer='yousef, girgia, Yijing, Adnan',
+    maintainer_email='s355447@studenti.polito.it, s352186@studenti.polito.it, s353515@studenti.polito.it, s355177@studenti.polito.it',
+    description='TODO: This package implements a controller and localization node for TurtleBot3.',
     license='Apache-2.0',
     extras_require={
         'test': [

@@ -1,23 +1,13 @@
-# Parameter file for the Bump and Go node
-# These values will override the defaults set in the Python script.
-
 bump_and_go_node:
   ros__parameters:
-  
-    # --- Basic Control ---
-    linear_speed: 0.3
-    angular_speed: 1.5
-    control_frequency: 10.0
-    min_distance_threshold: 1.0
+    # The default forward speed for the robot
+    linear_speed: 0.2
 
-    # --- Sensor/Detection ---
-    frontal_cone_deg: 60.0       
-    
-    # --- Topics & Goal ---
-    odom_topic: "/odom"          
-    goal_x: 6.5
-    goal_y: 3.0
-    
-    # --- Goal Behavior ---
-    goal_approach_dist: 1.0      # Distance (meters) to switch to GOAL state
-    goal_tolerance: 0.5          # Distance (meters) to switch to STOP state
+    # The default turning speed for the robot
+    angular_speed: 1.5
+
+    # The frequency (in Hz) at which the control loop runs
+    control_frequency: 10.0
+
+    # The minimum distance to an obstacle (in meters) before the robot turns
+    min_distance_threshold: 0.6
