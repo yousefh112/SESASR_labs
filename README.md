@@ -13,7 +13,7 @@ This repository is intended for **educational and reference purposes only**. The
 * **Yousef Abdelhady (https://github.com/yousefh112)**
 * **Adnan Ramlawi**
 * **Giorgia Boeri (https://github.com/GiorgiaB04)**
-* **Zhoe Yojing**
+* **Yijing Zhao**
 
 ## Lab Modules Overview
 
