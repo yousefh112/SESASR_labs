@@ -1,0 +1,6 @@
+[console_scripts]
+task0_landmark = lab04_pkg.landmark_model:main
+task0_velocity = lab04_pkg.velocity_model:main
+task1_node = lab04_pkg.task1:main
+task2_node = lab04_pkg.task2_def:main
+

@@ -11,8 +11,8 @@ This repository is intended for **educational and reference purposes only**. The
 ---
 ## Contributors
 * **Yousef Abdelhady (https://github.com/yousefh112)**
-* **Adnan Ramlawi**
-* **Giorgia Boeri (https://github.com/GiorgiaB04)**
+* **Adnan Ramlawi    (https://github.com/AdnanR12)** 
+* **Giorgia Boeri    (https://github.com/GiorgiaB04)**
 * **Yijing Zhao**
 
 ## Lab Modules Overview
