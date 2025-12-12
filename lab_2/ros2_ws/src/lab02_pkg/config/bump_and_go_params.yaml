@@ -1,0 +1,13 @@
+bump_and_go_node:
+  ros__parameters:
+    # The default forward speed for the robot
+    linear_speed: 0.2
+
+    # The default turning speed for the robot
+    angular_speed: 1.5
+
+    # The frequency (in Hz) at which the control loop runs
+    control_frequency: 10.0
+
+    # The minimum distance to an obstacle (in meters) before the robot turns
+    min_distance_threshold: 0.6
